@@ -138,7 +138,7 @@ const SheetsIntegration = {
      * @returns {Promise} - Test result
      */
     async testConnection() {
-        if (this.SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        if (this.SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxgj-hemDAr7CGRKQa8omQkpYto-b_Ns8MrbNHCkp4AzOJjGLn5EIRBZwAKC27hyIQi/exec') {
             return {
                 success: false,
                 message: 'URL de Google Apps Script no configurada'
