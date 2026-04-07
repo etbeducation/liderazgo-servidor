@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoevaluación - Liderazgo Servidor en la Escuela Católica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="main-title">Herramienta de Autoevaluación</h1>
+            <h2 class="subtitle">sobre Liderazgo Servidor en la Escuela Católica</h2>
+            <p class="author">Dr. Raúl R. Nieves Rivera</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Welcome Section -->
+            <section id="welcome-section" class="section active">
+                <div class="card">
+                    <h3>Propósito</h3>
+                    <p>Esta herramienta permite reflexionar personalmente sobre prácticas de liderazgo servicial que fortalecen la misión educativa y evangelizadora de la escuela católica.</p>
+                    
+                    <h3>Instrucciones</h3>
+                    <p>Lea cada afirmación y seleccione el número que mejor describa su práctica actual.</p>
+                    
+                    <div class="scale-legend">
+                        <div class="scale-item">
+                            <span class="scale-number">1</span>
+                            <span class="scale-label">Nunca</span>
+                        </div>
+                        <div class="scale-item">
+                            <span class="scale-number">2</span>
+                            <span class="scale-label">Rara vez</span>
+                        </div>
+                        <div class="scale-item">
+                            <span class="scale-number">3</span>
+                            <span class="scale-label">A veces</span>
+                        </div>
+                        <div class="scale-item">
+                            <span class="scale-number">4</span>
+                            <span class="scale-label">Frecuentemente</span>
+                        </div>
+                        <div class="scale-item">
+                            <span class="scale-number">5</span>
+                            <span class="scale-label">Siempre</span>
+                        </div>
+                    </div>
+
+                    <p class="note"><strong>Aplicación sugerida:</strong> Puede completarse individualmente y luego utilizarse para diálogo profesional, acompañamiento, planes de mejora y reflexión institucional.</p>
+
+                    <button class="btn btn-primary" onclick="startAssessment()">Comenzar Autoevaluación</button>
+                </div>
+            </section>
+
+            <!-- Assessment Form -->
+            <section id="assessment-section" class="section">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <p class="progress-text">Pregunta <span id="current-question">1</span> de 20</p>
+                </div>
+
+                <form id="assessment-form">
+                    
+                    <!-- Dimension I -->
+                    <div class="dimension-section">
+                        <h3 class="dimension-title">I. Identidad y misión</h3>
+                        
+                        <div class="question-card">
+                            <p class="question-number">1.</p>
+                            <p class="question-text">Mantengo presente que mi servicio educativo participa de la misión evangelizadora de la escuela católica.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q1" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">2.</p>
+                            <p class="question-text">Tomo decisiones considerando no solo la eficiencia, sino también la dignidad de las personas.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q2" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">3.</p>
+                            <p class="question-text">Procuro que mi trabajo refleje coherencia entre fe, trato humano y responsabilidad profesional.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q3" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">4.</p>
+                            <p class="question-text">Ayudo a otros a comprender que la misión de la escuela va más allá de cumplir funciones administrativas o académicas.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q4" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimension II -->
+                    <div class="dimension-section">
+                        <h3 class="dimension-title">II. Escucha, relaciones y acompañamiento</h3>
+                        
+                        <div class="question-card">
+                            <p class="question-number">5.</p>
+                            <p class="question-text">Escucho con respeto y apertura las necesidades, inquietudes y aportes de los demás.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q5" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">6.</p>
+                            <p class="question-text">Promuevo un ambiente de confianza, cercanía y trato fraterno en mi equipo o salón de clases.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q6" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">7.</p>
+                            <p class="question-text">Acompaño a las personas con sensibilidad pastoral, especialmente en momentos de dificultad.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q7" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">8.</p>
+                            <p class="question-text">Evito estilos autoritarios o indiferentes y procuro servir con humildad y claridad.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q8" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimension III -->
+                    <div class="dimension-section">
+                        <h3 class="dimension-title">III. Corresponsabilidad y trabajo en equipo</h3>
+                        
+                        <div class="question-card">
+                            <p class="question-number">9.</p>
+                            <p class="question-text">Fomento la participación de otros en la reflexión, la planificación y la toma de decisiones.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q9" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">10.</p>
+                            <p class="question-text">Reconozco los dones y fortalezas de quienes forman parte de la comunidad escolar.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q10" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">11.</p>
+                            <p class="question-text">Promuevo la colaboración entre áreas, evitando el aislamiento y la fragmentación.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q11" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">12.</p>
+                            <p class="question-text">Busco construir unidad sin anular la diversidad de funciones, perspectivas y talentos.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q12" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimension IV -->
+                    <div class="dimension-section">
+                        <h3 class="dimension-title">IV. Formación, apoyo y crecimiento</h3>
+                        
+                        <div class="question-card">
+                            <p class="question-number">13.</p>
+                            <p class="question-text">Procuro ofrecer o promover oportunidades de formación humana, espiritual y profesional.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q13" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">14.</p>
+                            <p class="question-text">Brindo orientación, retroalimentación y apoyo de manera respetuosa y constructiva.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q14" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">15.</p>
+                            <p class="question-text">Reconozco el esfuerzo y los avances de quienes sirven en la comunidad escolar.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q15" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q15" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q15" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q15" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q15" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">16.</p>
+                            <p class="question-text">Me esfuerzo por crear condiciones para que otros crezcan, no solo para que cumplan tareas.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q16" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q16" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q16" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q16" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q16" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dimension V -->
+                    <div class="dimension-section">
+                        <h3 class="dimension-title">V. Discernimiento, justicia y testimonio</h3>
+                        
+                        <div class="question-card">
+                            <p class="question-number">17.</p>
+                            <p class="question-text">Discierno antes de actuar impulsivamente ante conflictos o situaciones complejas.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q17" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q17" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q17" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q17" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q17" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">18.</p>
+                            <p class="question-text">Procuro que mis decisiones favorezcan el bien común y el cuidado de los más vulnerables.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q18" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q18" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q18" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q18" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q18" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">19.</p>
+                            <p class="question-text">Asumo la responsabilidad de mis decisiones con transparencia, seguimiento y sentido de justicia.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q19" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q19" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q19" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q19" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q19" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="question-number">20.</p>
+                            <p class="question-text">Mi manera de liderar o enseñar da testimonio de servicio, integridad y esperanza cristiana.</p>
+                            <div class="rating-scale">
+                                <label class="rating-option">
+                                    <input type="radio" name="q20" value="1" required>
+                                    <span>1</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q20" value="2">
+                                    <span>2</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q20" value="3">
+                                    <span>3</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q20" value="4">
+                                    <span>4</span>
+                                </label>
+                                <label class="rating-option">
+                                    <input type="radio" name="q20" value="5">
+                                    <span>5</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Calcular Resultados</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- User Info Modal -->
+            <div id="user-info-modal" class="modal">
+                <div class="modal-content">
+                    <h3>Antes de ver sus resultados completos</h3>
+                    <p>Por favor, ingrese su información para recibir el reporte detallado:</p>
+                    <form id="user-info-form">
+                        <div class="form-group">
+                            <label for="user-name">Nombre completo *</label>
+                            <input type="text" id="user-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">Correo electrónico *</label>
+                            <input type="email" id="user-email" name="email" required>
+                        </div>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn btn-primary">Ver Resultados Completos</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <section id="results-section" class="section">
+                <div class="card results-card">
+                    <h3>Sus Resultados</h3>
+                    
+                    <div class="score-display">
+                        <div class="total-score">
+                            <span class="score-label">Puntaje Total</span>
+                            <span class="score-value" id="total-score">0</span>
+                            <span class="score-max">/ 100</span>
+                        </div>
+                    </div>
+
+                    <div id="interpretation" class="interpretation-box">
+                        <!-- Dynamic interpretation will be inserted here -->
+                    </div>
+
+                    <h4>Puntaje por Dimensión</h4>
+                    <div class="dimension-scores">
+                        <div class="dimension-score-item">
+                            <span class="dimension-name">I. Identidad y misión</span>
+                            <div class="score-bar-container">
+                                <div class="score-bar" id="dim1-bar"></div>
+                            </div>
+                            <span class="dimension-score" id="dim1-score">0/20</span>
+                        </div>
+                        <div class="dimension-score-item">
+                            <span class="dimension-name">II. Escucha, relaciones y acompañamiento</span>
+                            <div class="score-bar-container">
+                                <div class="score-bar" id="dim2-bar"></div>
+                            </div>
+                            <span class="dimension-score" id="dim2-score">0/20</span>
+                        </div>
+                        <div class="dimension-score-item">
+                            <span class="dimension-name">III. Corresponsabilidad y trabajo en equipo</span>
+                            <div class="score-bar-container">
+                                <div class="score-bar" id="dim3-bar"></div>
+                            </div>
+                            <span class="dimension-score" id="dim3-score">0/20</span>
+                        </div>
+                        <div class="dimension-score-item">
+                            <span class="dimension-name">IV. Formación, apoyo y crecimiento</span>
+                            <div class="score-bar-container">
+                                <div class="score-bar" id="dim4-bar"></div>
+                            </div>
+                            <span class="dimension-score" id="dim4-score">0/20</span>
+                        </div>
+                        <div class="dimension-score-item">
+                            <span class="dimension-name">V. Discernimiento, justicia y testimonio</span>
+                            <div class="score-bar-container">
+                                <div class="score-bar" id="dim5-bar"></div>
+                            </div>
+                            <span class="dimension-score" id="dim5-score">0/20</span>
+                        </div>
+                    </div>
+
+                    <div class="reflection-section">
+                        <h4>Preguntas de Reflexión Personal</h4>
+                        
+                        <div class="reflection-question">
+                            <label>¿En qué dimensión del liderazgo servicial reconozco hoy mi mayor fortaleza?</label>
+                            <textarea id="reflection1" rows="3"></textarea>
+                        </div>
+
+                        <div class="reflection-question">
+                            <label>¿Qué práctica necesito fortalecer con mayor urgencia en mi servicio educativo?</label>
+                            <textarea id="reflection2" rows="3"></textarea>
+                        </div>
+
+                        <div class="reflection-question">
+                            <label>¿Qué apoyo, formación o acompañamiento me ayudaría a crecer en esta área?</label>
+                            <textarea id="reflection3" rows="3"></textarea>
+                        </div>
+
+                        <div class="reflection-question">
+                            <label>¿Qué compromiso concreto asumo para las próximas cuatro semanas?</label>
+                            <textarea id="reflection4" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" onclick="downloadPDF()">Descargar Resultados (PDF)</button>
+                        <button class="btn btn-secondary" onclick="emailResults()">Enviar a mi Correo</button>
+                        <button class="btn btn-outline" onclick="resetAssessment()">Realizar Nueva Evaluación</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Dr. Raúl R. Nieves Rivera</p>
+            <p class="footer-note">Esta herramienta tiene propósito formativo, no punitivo. El valor principal está en la reflexión honesta y los compromisos de crecimiento.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/calculator.js"></script>
+    <script src="js/sheets.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
