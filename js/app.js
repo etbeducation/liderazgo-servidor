@@ -294,7 +294,7 @@ async function downloadPDF() {
         pageWidth - 46
     );
     
-    const boxHeight = (titleLines.length * 5) + (interpretationLines.length * 5) + 8;
+    const boxHeight = (titleLines.length * 5) + (interpretationLines.length * 5) + 12;
     
     // Dibujar caja de fondo
     doc.rect(leftMargin, yPosition, pageWidth - 40, boxHeight, 'F');
@@ -303,13 +303,13 @@ async function downloadPDF() {
     doc.setFontSize(11);
     doc.setFont(undefined, 'bold');
     doc.text(titleLines, leftMargin + 3, yPosition + 4);
-    yPosition += (titleLines.length * 5) + 3; // Espacio después del título
+    yPosition += (titleLines.length * 5) + 7; // Espacio después del título
     
     // Mensaje normal
     doc.setFont(undefined, 'normal');
     doc.setFontSize(10);
     doc.text(interpretationLines, leftMargin + 3, yPosition);
-    yPosition += (interpretationLines.length * 5) + 8;
+    yPosition += (interpretationLines.length * 5) + 15;
     
     // Dimension scores
     doc.setFontSize(12);
