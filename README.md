@@ -68,67 +68,6 @@ liderazgo-servidor/
 6. Autoriza la aplicación (puede que te pida permisos)
 7. **COPIA LA URL** que aparece (se ve así: `https://script.google.com/macros/s/ABC123.../exec`)
 
-#### 2.4 Conectar la Web App con el formulario
-
-1. Abre el archivo `js/sheets.js`
-2. Busca la línea 8:
-   ```javascript
-   SCRIPT_URL: 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE',
-   ```
-3. Reemplázala con tu URL copiada:
-   ```javascript
-   SCRIPT_URL: 'https://script.google.com/macros/s/TU_URL_AQUI/exec',
-   ```
-4. Guarda el archivo
-
----
-
-### Paso 3: Deployment en GitHub Pages
-
-#### 3.1 Crear repositorio en GitHub
-
-1. Ve a [GitHub](https://github.com) e inicia sesión
-2. Haz clic en **New repository** (botón verde)
-3. Configura:
-   - **Repository name:** `liderazgo-servidor`
-   - **Description:** "Herramienta de Autoevaluación - Liderazgo Servidor"
-   - **Visibility:** Public
-4. Haz clic en **Create repository**
-
-#### 3.2 Subir archivos
-
-Opción A - **Via web (más fácil):**
-
-1. En tu nuevo repositorio, haz clic en **Add file** → **Upload files**
-2. Arrastra TODOS los archivos y carpetas del proyecto:
-   - `index.html`
-   - carpeta `css/`
-   - carpeta `js/`
-3. Escribe un mensaje: "Initial commit"
-4. Haz clic en **Commit changes**
-
-Opción B - **Via Git (más profesional):**
-
-```bash
-cd liderazgo-servidor
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/liderazgo-servidor.git
-git push -u origin main
-```
-
-#### 3.3 Activar GitHub Pages
-
-1. En tu repositorio, ve a **Settings** (Configuración)
-2. En el menú lateral, haz clic en **Pages**
-3. En **Source**, selecciona:
-   - **Branch:** `main`
-   - **Folder:** `/ (root)`
-4. Haz clic en **Save**
-5. Espera 1-2 minutos
-6. Tu sitio estará disponible en: `https://TU_USUARIO.github.io/liderazgo-servidor/`
 
 ---
 
@@ -196,12 +135,6 @@ El script crea dos hojas:
 - Verifica que el archivo `css/styles.css` esté cargando correctamente
 - Revisa la consola del navegador (F12) para errores de carga
 
-### El PDF no se genera
-
-1. Verifica que el script de jsPDF esté cargando (línea 384 de `index.html`)
-2. Asegúrate de que JavaScript esté habilitado en el navegador
-3. Prueba en un navegador diferente (Chrome/Firefox/Edge)
-
 ---
 
 ## 📧 Funcionalidades Futuras
@@ -213,47 +146,18 @@ El script crea dos hojas:
 
 ---
 
-## 📄 Estructura de Datos en Google Sheets
-
-### Hoja "Respuestas"
-| Columna | Descripción |
-|---------|-------------|
-| A | Timestamp ISO |
-| B | Fecha (DD/MM/YYYY) |
-| C | Hora (HH:MM:SS) |
-| D | Nombre |
-| E | Email |
-| F | Puntaje Total (0-100) |
-| G | Interpretación |
-| H | Categoría |
-| I-M | Puntajes por dimensión (0-20 cada uno) |
-| N-Q | Análisis (fortalezas y áreas de mejora) |
-
-### Hoja "Respuestas Detalladas"
-| Columna | Descripción |
-|---------|-------------|
-| A | Timestamp |
-| B | Nombre |
-| C | Email |
-| D-W | Respuestas individuales Q1-Q20 (1-5) |
-| X | Puntaje Total |
-
----
-
 ## 🛡️ Seguridad y Privacidad
 
-- Los datos se almacenan en tu Google Sheet personal
-- No hay backend externo - todo corre en el navegador del usuario
+- Los datos se almacenan en Google Sheet privado
 - Google Apps Script requiere autorización explícita
 - Los datos NO se comparten con terceros
-- Recomendado: Configura permisos de visualización de tu Google Sheet
 
 ---
 
 ## 👨‍💻 Soporte Técnico
 
 Para preguntas o asistencia:
-- Email: [Tu email de contacto]
+- Email: gn@etb.education
 - Issues: GitHub Issues en este repositorio
 
 ---
