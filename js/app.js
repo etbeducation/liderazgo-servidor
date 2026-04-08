@@ -553,3 +553,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     */
 });
+
+/**
+ * Show privacy policy modal
+ */
+function showPrivacyModal() {
+    const modal = document.getElementById('privacy-modal');
+    modal.classList.add('active');
+}
+
+/**
+ * Hide privacy policy modal
+ */
+function hidePrivacyModal() {
+    const modal = document.getElementById('privacy-modal');
+    modal.classList.remove('active');
+}
