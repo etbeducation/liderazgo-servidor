@@ -15,7 +15,7 @@ const SheetsIntegration = {
      */
     async sendToSheets(data) {
         // Check if URL is configured
-        if (this.SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbxgj-hemDAr7CGRKQa8omQkpYto-b_Ns8MrbNHCkp4AzOJjGLn5EIRBZwAKC27hyIQi/exec') {
+        if (this.SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
             console.warn('Google Sheets integration not configured. Data will not be saved.');
             console.log('Data that would be sent:', data);
             return Promise.resolve({ 
