@@ -370,20 +370,111 @@ async function downloadPDF() {
     doc.setFont(undefined, 'bold');
     doc.text(`(${assessmentResults.analysis.weakest.score}/20)`, pageWidth - 5, yPosition, { align: 'right' });
     
+    yPosition += 10;
+    
+    // Check if we need a new page for reflections
+    if (yPosition > 220) {
+        doc.addPage();
+        yPosition = 20;
+    }
+    
+    // Reflection Questions Section
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'bold');
+    doc.text('Preguntas de Reflexión Personal', leftMargin, yPosition);
+    yPosition += 8;
+    
+    const reflections = [
+        {
+            question: '¿En qué dimensión del liderazgo servicial reconozco hoy mi mayor fortaleza?',
+            answer: document.getElementById('reflection1').value
+        },
+        {
+            question: '¿Qué práctica necesito fortalecer con mayor urgencia en mi servicio educativo?',
+            answer: document.getElementById('reflection2').value
+        },
+        {
+            question: '¿Qué apoyo, formación o acompañamiento me ayudaría a crecer en esta área?',
+            answer: document.getElementById('reflection3').value
+        },
+        {
+            question: '¿Qué compromiso concreto asumo para las próximas cuatro semanas?',
+            answer: document.getElementById('reflection4').value
+        }
+    ];
+    
+    doc.setFontSize(10);
+    
+    for (let i = 0; i < reflections.length; i++) {
+        // Check if we need a new page
+        if (yPosition > 250) {
+            doc.addPage();
+            yPosition = 20;
+        }
+        
+        // Question
+        doc.setFont(undefined, 'bold');
+        doc.setTextColor(37, 99, 235); // Blue
+        const questionLines = doc.splitTextToSize(reflections[i].question, pageWidth - 40);
+        doc.text(questionLines, leftMargin, yPosition);
+        yPosition += (questionLines.length * 5) + 2;
+        
+        // Answer box
+        doc.setFont(undefined, 'normal');
+        doc.setTextColor(0, 0, 0);
+        
+        if (reflections[i].answer && reflections[i].answer.trim() !== '') {
+            // If there's an answer, show it
+            doc.setFillColor(248, 250, 252); // Very light gray
+            const answerLines = doc.splitTextToSize(reflections[i].answer, pageWidth - 46);
+            const boxHeight = Math.max(12, (answerLines.length * 5) + 4);
+            doc.rect(leftMargin, yPosition, pageWidth - 40, boxHeight, 'F');
+            doc.text(answerLines, leftMargin + 3, yPosition + 4);
+            yPosition += boxHeight + 5;
+        } else {
+            // If no answer, show empty box
+            doc.setDrawColor(203, 213, 225);
+            doc.rect(leftMargin, yPosition, pageWidth - 40, 12);
+            doc.setTextColor(148, 163, 184);
+            doc.setFont(undefined, 'italic');
+            doc.text('(Sin respuesta)', leftMargin + 3, yPosition + 7);
+            doc.setFont(undefined, 'normal');
+            doc.setTextColor(0, 0, 0);
+            yPosition += 17;
+        }
+    }
+    
+    // Add some space before footer
+    yPosition += 5;
+    
+    // Check if we're too close to the bottom
+    if (yPosition > 260) {
+        doc.addPage();
+        yPosition = 260;
+    } else {
+        // Move to footer position
+        yPosition = 275;
+    }
+    
     // Footer
     doc.setDrawColor(203, 213, 225);
-    doc.line(leftMargin, 275, pageWidth, 275);
+    doc.line(leftMargin, yPosition, pageWidth, yPosition);
+    
+    yPosition += 7;
     
     doc.setFontSize(9);
     doc.setFont(undefined, 'normal');
     doc.setTextColor(100, 116, 139);
-    doc.text('© 2025 Dr. Raúl R. Nieves Rivera', leftMargin, 282);
-    doc.text('Powered by EdTech Believers LLC', pageWidth, 282, { align: 'right' });
+    doc.text('© 2025 Dr. Raúl R. Nieves Rivera', leftMargin, yPosition);
+    doc.text('Powered by EdTech Believers LLC', pageWidth, yPosition, { align: 'right' });
+    
+    yPosition += 5;
     
     doc.setFontSize(8);
     doc.setFont(undefined, 'italic');
     const footerNote = 'Esta herramienta tiene propósito formativo, no punitivo.';
-    doc.text(footerNote, 105, 287, { align: 'center' });
+    doc.text(footerNote, 105, yPosition, { align: 'center' });
     
     // Save PDF
     const fileName = `Liderazgo_Servidor_${userInformation.name.replace(/\s/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
