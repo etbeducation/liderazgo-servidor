@@ -668,7 +668,92 @@
                     </form>
                 </div>
             </div>
-
+<!-- Privacy Policy Modal -->
+            <div id="privacy-modal" class="modal">
+                <div class="modal-content" style="max-width: 700px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h3 style="margin: 0;">Política de Privacidad y Uso de Datos</h3>
+                        <button onclick="hidePrivacyModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b;">&times;</button>
+                    </div>
+                    
+                    <div style="max-height: 400px; overflow-y: auto; padding-right: 1rem;">
+                        
+                        <h4 style="color: #2563eb; margin-top: 1.5rem;">1. Responsables del Tratamiento de Datos</h4>
+                        <p>Esta herramienta es administrada conjuntamente por <strong>EdTech Believers LLC</strong> y el <strong>Dr. Raúl R. Nieves Rivera</strong>, quienes actúan como responsables del tratamiento de los datos personales recopilados.</p>
+                        
+                        <h4 style="color: #2563eb; margin-top: 1.5rem;">2. Datos Recopilados</h4>
+                        <p>Al completar esta autoevaluación, recopilamos la siguiente información:</p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Nombre completo</li>
+                            <li>Correo electrónico</li>
+                            <li>Respuestas a 20 preguntas sobre prácticas de liderazgo servicial (escala 1-5)</li>
+                            <li>Fecha y hora de participación</li>
+                        </ul>
+                        <p><strong>Nota:</strong> Las reflexiones personales que pueda escribir en la sección de resultados <strong>NO se recopilan ni almacenan</strong>. Estas permanecen únicamente en su dispositivo.</p>
+                        
+                        <h4 style="color: #2563eb; margin-top: 1.5rem;">3. Propósito y Uso de los Datos</h4>
+                        <p>Sus datos se utilizan exclusivamente para los siguientes fines legítimos:</p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li><strong>Investigación educativa:</strong> Análisis de prácticas de liderazgo servicial en instituciones educativas católicas</li>
+                            <li><strong>Publicaciones académicas:</strong> Resultados agregados (sin identificación personal) en artículos y estudios</li>
+                            <li><strong>Presentaciones profesionales:</strong> Datos estadísticos generales en conferencias y talleres</li>
+                            <li><strong>Comunicaciones educativas:</strong> Su correo electrónico podrá utilizarse para enviarle información relevante sobre liderazgo, tecnología y educación</li>
+                        </ul>
+                        
+                        <p><strong>Lo que NO hacemos con sus datos:</strong></p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>❌ Venta o comercialización de datos personales</li>
+                            <li>❌ Promociones comerciales, ventas o mercadeo no educativo</li>
+                            <li>❌ Compartir con terceros sin su consentimiento explícito</li>
+                            <li>❌ Uso para fines distintos a los declarados anteriormente</li>
+                        </ul>
+                        
+                        <h4 style="color: #2563eb; margin-top: 1.5rem;">4. Almacenamiento y Seguridad</h4>
+                        <p>Sus datos se almacenan de forma segura en <strong>Google Sheets</strong>, protegidos mediante:</p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Autenticación de dos factores</li>
+                            <li>Acceso restringido únicamente a los responsables autorizados</li>
+                            <li>Encriptación de datos en tránsito y en reposo (infraestructura de Google)</li>
+                        </ul>
+                        <p><strong>Retención:</strong> Los datos se conservarán por un período de <strong>5 años</strong> a partir de la fecha de recopilación, plazo estándar para investigación educativa y publicaciones académicas.</p>
+                        
+                        <h4 style="color: #2563eb; margin-top: 1.5rem;">5. Sus Derechos como Participante</h4>
+                        <p>Usted tiene los siguientes derechos en relación con sus datos personales:</p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li><strong>Participación voluntaria:</strong> Su participación es completamente voluntaria. Puede abandonar el proceso en cualquier momento antes de hacer clic en "Calcular Resultados".</li>
+                            <li><strong>Derecho de acceso:</strong> Puede solicitar una copia de los datos que tenemos sobre usted.</li>
+                            <li><strong>Derecho de rectificación:</strong> Puede solicitar la corrección de datos inexactos.</li>
+                            <li><strong>Derecho de supresión:</strong> Puede solicitar la eliminación de sus datos personales.</li>
+                            <li><strong>Derecho de portabilidad:</strong> Puede solicitar que le enviemos sus datos en formato estructurado.</li>
+                        </ul>
+                        <p>Para ejercer cualquiera de estos derechos, contáctenos en: <strong><a href="mailto:gn@etb.education" style="color: #2563eb;">gn@etb.education</a></strong></p>
+                        
+                        <h4 style="color: #2563eb; margin-top: 1.5rem;">6. Consentimiento Informado</h4>
+                        <p>Al hacer clic en "Comenzar Autoevaluación" y completar este formulario, usted declara que:</p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Ha leído y comprendido esta Política de Privacidad</li>
+                            <li>Consiente voluntariamente el tratamiento de sus datos según lo descrito</li>
+                            <li>Entiende que puede retirar su consentimiento en cualquier momento antes de enviar el formulario</li>
+                        </ul>
+                        
+                        <h4 style="color: #2563eb; margin-top: 1.5rem;">7. Contacto</h4>
+                        <p>Para preguntas, inquietudes o solicitudes relacionadas con privacidad y protección de datos:</p>
+                        <p style="margin-left: 1.5rem;">
+                            <strong>Email:</strong> <a href="mailto:gn@etb.education" style="color: #2563eb;">gn@etb.education</a><br>
+                            <strong>Responsables:</strong> EdTech Believers LLC | Dr. Raúl R. Nieves Rivera
+                        </p>
+                        
+                        <p style="margin-top: 1.5rem; padding: 1rem; background: #f1f5f9; border-radius: 0.5rem; font-size: 0.9rem;">
+                            <strong>Última actualización:</strong> Abril 2026<br>
+                            Esta política puede ser actualizada periódicamente. Los cambios significativos serán comunicados a través del correo electrónico registrado.
+                        </p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <button class="btn btn-primary" onclick="hidePrivacyModal()">Entendido</button>
+                    </div>
+                </div>
+            </div>
             <!-- Results Section -->
             <section id="results-section" class="section">
                 <div class="card results-card">
