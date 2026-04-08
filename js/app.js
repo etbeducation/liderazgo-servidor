@@ -178,9 +178,6 @@ function displayDimensionScores() {
 /**
  * Download results as PDF
  */
-/**
- * Download results as PDF
- */
 async function downloadPDF() {
     if (!window.jspdf || !window.jspdf.jsPDF) {
         alert('El generador de PDF no está disponible. Por favor, recargue la página e intente nuevamente.');
@@ -217,27 +214,27 @@ async function downloadPDF() {
     doc.setTextColor(0, 0, 0);
     yPosition = 55;
     
-    // User info box
+    // User info box - CORREGIDO
     doc.setFillColor(219, 234, 254); // Light blue background
-    doc.rect(leftMargin, yPosition, pageWidth - 40, 22, 'F');
+    doc.rect(leftMargin, yPosition, pageWidth - 40, 25, 'F'); // Aumentado altura a 25
     
     doc.setFontSize(11);
     doc.setFont(undefined, 'bold');
-    doc.text('Información del Participante', leftMargin + 5, yPosition + 7);
+    doc.text('Información del Participante', leftMargin + 5, yPosition + 6);
     
     doc.setFont(undefined, 'normal');
     doc.setFontSize(10);
-    doc.text(`Nombre: ${userInformation.name}`, leftMargin + 5, yPosition + 13);
-    doc.text(`Email: ${userInformation.email}`, leftMargin + 5, yPosition + 18);
+    doc.text(`Nombre: ${userInformation.name}`, leftMargin + 5, yPosition + 12);
+    doc.text(`Email: ${userInformation.email}`, leftMargin + 5, yPosition + 17);
     
     const fechaActual = new Date().toLocaleDateString('es-PR', { 
         year: 'numeric', 
         month: 'long', 
         day: 'numeric' 
     });
-    doc.text(`Fecha: ${fechaActual}`, leftMargin + 5, yPosition + 23);
+    doc.text(`Fecha: ${fechaActual}`, leftMargin + 5, yPosition + 22);
     
-    yPosition += 32;
+    yPosition += 33; // Ajustado
     
     // Total Score - Large and prominent
     doc.setFillColor(219, 234, 254);
@@ -258,7 +255,7 @@ async function downloadPDF() {
     yPosition += 40;
     doc.setTextColor(0, 0, 0);
     
-    // Interpretation box
+    // Interpretation box - CORREGIDO
     doc.setFontSize(12);
     doc.setFont(undefined, 'bold');
     doc.text('Interpretación', leftMargin, yPosition);
@@ -284,12 +281,11 @@ async function downloadPDF() {
     }
     
     doc.setFillColor(boxColor[0], boxColor[1], boxColor[2]);
-    doc.rect(leftMargin, yPosition, pageWidth - 40, 5, 'F');
     
+    // Calcular altura necesaria para el título y mensaje
     doc.setFontSize(11);
     doc.setFont(undefined, 'bold');
-    doc.text(assessmentResults.interpretation.title, leftMargin + 3, yPosition + 3.5);
-    yPosition += 7;
+    const titleLines = doc.splitTextToSize(assessmentResults.interpretation.title, pageWidth - 46);
     
     doc.setFont(undefined, 'normal');
     doc.setFontSize(10);
@@ -297,6 +293,21 @@ async function downloadPDF() {
         assessmentResults.interpretation.message, 
         pageWidth - 46
     );
+    
+    const boxHeight = (titleLines.length * 5) + (interpretationLines.length * 5) + 8;
+    
+    // Dibujar caja de fondo
+    doc.rect(leftMargin, yPosition, pageWidth - 40, boxHeight, 'F');
+    
+    // Título en negrita
+    doc.setFontSize(11);
+    doc.setFont(undefined, 'bold');
+    doc.text(titleLines, leftMargin + 3, yPosition + 4);
+    yPosition += (titleLines.length * 5) + 3; // Espacio después del título
+    
+    // Mensaje normal
+    doc.setFont(undefined, 'normal');
+    doc.setFontSize(10);
     doc.text(interpretationLines, leftMargin + 3, yPosition);
     yPosition += (interpretationLines.length * 5) + 8;
     
@@ -378,29 +389,35 @@ async function downloadPDF() {
         yPosition = 20;
     }
     
-    // Reflection Questions Section
+    // Reflection Questions Section - CORREGIDO
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
     doc.setFont(undefined, 'bold');
     doc.text('Preguntas de Reflexión Personal', leftMargin, yPosition);
     yPosition += 8;
     
+    // Obtener valores de los textareas
+    const reflection1 = document.getElementById('reflection1') ? document.getElementById('reflection1').value : '';
+    const reflection2 = document.getElementById('reflection2') ? document.getElementById('reflection2').value : '';
+    const reflection3 = document.getElementById('reflection3') ? document.getElementById('reflection3').value : '';
+    const reflection4 = document.getElementById('reflection4') ? document.getElementById('reflection4').value : '';
+    
     const reflections = [
         {
             question: '¿En qué dimensión del liderazgo servicial reconozco hoy mi mayor fortaleza?',
-            answer: document.getElementById('reflection1').value
+            answer: reflection1
         },
         {
             question: '¿Qué práctica necesito fortalecer con mayor urgencia en mi servicio educativo?',
-            answer: document.getElementById('reflection2').value
+            answer: reflection2
         },
         {
             question: '¿Qué apoyo, formación o acompañamiento me ayudaría a crecer en esta área?',
-            answer: document.getElementById('reflection3').value
+            answer: reflection3
         },
         {
             question: '¿Qué compromiso concreto asumo para las próximas cuatro semanas?',
-            answer: document.getElementById('reflection4').value
+            answer: reflection4
         }
     ];
     
@@ -408,7 +425,7 @@ async function downloadPDF() {
     
     for (let i = 0; i < reflections.length; i++) {
         // Check if we need a new page
-        if (yPosition > 250) {
+        if (yPosition > 240) {
             doc.addPage();
             yPosition = 20;
         }
@@ -428,34 +445,33 @@ async function downloadPDF() {
             // If there's an answer, show it
             doc.setFillColor(248, 250, 252); // Very light gray
             const answerLines = doc.splitTextToSize(reflections[i].answer, pageWidth - 46);
-            const boxHeight = Math.max(12, (answerLines.length * 5) + 4);
+            const boxHeight = Math.max(12, (answerLines.length * 5) + 6);
             doc.rect(leftMargin, yPosition, pageWidth - 40, boxHeight, 'F');
-            doc.text(answerLines, leftMargin + 3, yPosition + 4);
+            doc.text(answerLines, leftMargin + 3, yPosition + 5);
             yPosition += boxHeight + 5;
         } else {
             // If no answer, show empty box
             doc.setDrawColor(203, 213, 225);
-            doc.rect(leftMargin, yPosition, pageWidth - 40, 12);
+            doc.setFillColor(248, 250, 252);
+            doc.rect(leftMargin, yPosition, pageWidth - 40, 15, 'FD');
             doc.setTextColor(148, 163, 184);
             doc.setFont(undefined, 'italic');
-            doc.text('(Sin respuesta)', leftMargin + 3, yPosition + 7);
+            doc.text('(Sin respuesta)', leftMargin + 3, yPosition + 9);
             doc.setFont(undefined, 'normal');
             doc.setTextColor(0, 0, 0);
-            yPosition += 17;
+            yPosition += 20;
         }
     }
     
     // Add some space before footer
     yPosition += 5;
     
-    // Check if we're too close to the bottom
-    if (yPosition > 260) {
-        doc.addPage();
-        yPosition = 260;
-    } else {
-        // Move to footer position
-        yPosition = 275;
-    }
+    // Check if we're too close to the bottom for footer
+    const currentPage = doc.internal.getNumberOfPages();
+    doc.setPage(currentPage);
+    
+    // Always put footer at bottom of last page
+    yPosition = 275;
     
     // Footer
     doc.setDrawColor(203, 213, 225);
